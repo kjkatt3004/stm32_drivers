@@ -1,0 +1,15 @@
+# STM32CubeIDE Build Outputs
+Debug/
+Release/
+*.o
+*.d
+*.su
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+
+# IDE Configuration & History
+.localhistory/
+.mxproject
