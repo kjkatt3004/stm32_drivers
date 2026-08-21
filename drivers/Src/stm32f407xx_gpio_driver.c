@@ -124,6 +124,7 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnOrDi)
 void GPIO_init(GPIO_Handle_t *pGPIOHandle)
 {
 	uint32_t temp = 0;
+
 	// 1. configure the mode of GPIO pin
 	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode <= GPIO_MODE_ANALOG)
 	{
@@ -480,5 +481,11 @@ void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
  */
 void GPIO_IRQHandling(uint8_t PinNumber)
 {
+	// clear the exti pr register corresponding to the pin number
+	if(EXTI->PR & (1 << PinNumber))
+	{
+		//clear
+		EXTI->PR |= (1 << PinNumber);
+	}
 
 }
