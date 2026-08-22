@@ -339,6 +339,14 @@ typedef struct
 #define GPIOH_REG_RESET()				do { (RCC->AHB1RSTR |= (1 << 7)); (RCC->AHB1RSTR &= ~(1 << 7)); } while(0)
 #define GPIOI_REG_RESET()				do { (RCC->AHB1RSTR |= (1 << 8)); (RCC->AHB1RSTR &= ~(1 << 8)); } while(0)
 
+/*
+ * Macros to reset SPIx peripherals
+ */
+#define SPI1_REG_RESET() 				do { (RCC->APB2RSTR |= (1 << 12)); (RCC->APB2RSTR &= ~(1 << 12)); } while(0)
+#define SPI2_REG_RESET()				do { (RCC->APB1RSTR |= (1 << 14)); (RCC->APB1RSTR &= ~(1 << 14)); } while(0)
+#define SPI3_REG_RESET()				do { (RCC->APB1RSTR |= (1 << 15)); (RCC->APB1RSTR &= ~(1 << 15)); } while(0)
+
+
 #define GPIO_BASEADDRESS_TO_CODE(x)			((x == GPIOA) ? 0 : \
 											 (x == GPIOB) ? 1 : \
 											 (x == GPIOC) ? 2 : \
@@ -369,7 +377,8 @@ typedef struct
 #define RESET 			DISABLE
 #define GPIO_PIN_SET	SET
 #define GPIO_PIN_RESET	RESET
-
+#define FLAG_RESET      RESET
+#define FLAG_SET 		SET
 
 /******************************************************************************************
  *Bit position definitions of SPI peripheral
